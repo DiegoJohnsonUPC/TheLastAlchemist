@@ -11,15 +11,37 @@ public class Room_Spawner : MonoBehaviour
     //4 --> R
     private Room_Templates templates;
     private int rand;
-    private bool spawned = false;
+    private float randf;
+    public bool spawned = false;
     private GameObject grid;
     void Start(){
+        
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<Room_Templates>();
+        if(templates.positions.ContainsKey(transform.position)){
+            Destroy(this);
+            Debug.Log("choque");
+        } 
         grid = GameObject.FindGameObjectWithTag("Grid");
-        Invoke("Spawn",0.1f);
+        randf = (Random.Range(100,200))/100f;
+        
+        if(templates.finish == false){
+            Invoke("Spawn",randf);
+        }
+        else{
+            Invoke("LastRoom",randf);
+        }
+
+        
     }
 
     void Spawn(){
+        if(templates.positions.ContainsKey(transform.position)){
+            Destroy(this);
+        } 
+        templates.positions.Add(transform.position, this);
+        Debug.Log(templates.positions.Count);
+        Debug.Log(transform.position);
+        
         if(spawned == false){
             if(openingDirection == 1){
                 //1 --> D
@@ -44,17 +66,30 @@ public class Room_Spawner : MonoBehaviour
             }
             spawned = true;
         }
+
         
     }
     
-    void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("SpawnPoint") && spawned == false){
-            Destroy(gameObject);
+    void OnTriggerStay2D(Collider2D other) {
+        /*
+        if(other.CompareTag("SpawnPoint")){
+            if(other.GetComponent<Room_Spawner>().spawned == true 
+            && spawned == false){
+                Destroy(gameObject);
+            }
         }
+        */
+        
+          
     }
 
     public void LastRoom(){
-        /*
+        if(templates.positions.ContainsKey(transform.position)){
+            Destroy(this);
+        } 
+        templates.positions.Add(transform.position, this);
+        Debug.Log(templates.positions.Count);
+        Debug.Log(transform.position);
         if(spawned == false){
             if(openingDirection == 1){
                 //1 --> D
@@ -79,7 +114,7 @@ public class Room_Spawner : MonoBehaviour
             }
             spawned = true;
         }
-        */
-        Debug.Log("d");
+        
+        //Debug.Log("d");
     }
 }
