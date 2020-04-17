@@ -47,3 +47,6 @@ TagManager:
   - name: walls
     uniqueID: 290574027
     locked: 0
+  - name: UI
+    uniqueID: 4041816011
+    locked: 0
