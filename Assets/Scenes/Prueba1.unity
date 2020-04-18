@@ -12635,7 +12635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: f7969edad351d1c40ba16da2ec9c552e, type: 2}
   inventory: {fileID: 766421018}
-  itemPickupKeyCode: 101
 --- !u!212 &973067953
 SpriteRenderer:
   m_ObjectHideFlags: 0
