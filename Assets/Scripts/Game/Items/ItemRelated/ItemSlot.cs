@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
 {
     [SerializeField] Image image;
+    [SerializeField] Text amountText;
 
     public event Action<ItemSlot> OnRightClickEvent;
     public event Action<ItemSlot> OnBeginDragEvent;
@@ -32,6 +33,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
     }
+    private int _amount;
+    public int Amount
+    {
+        get { return _amount;}
+        set
+        {
+            _amount = value;
+            if (_amount < 0) _amount = 0;
+            if (_amount == 0) item = null;
+
+            amountText.enabled = _item != null && _amount > 1;
+            if (amountText.enabled)
+            {
+                amountText.text = _amount.ToString();
+            }   
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -46,6 +64,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         if (image == null)
             image = GetComponent<Image>();
+        if (amountText == null)
+            amountText = GetComponentInChildren<Text>();
+    }
+
+    public virtual bool CanAddStack(Item Iitem, int amount = 1)
+    {
+        return item != null && item.ID == Iitem.ID && Amount + amount <=  Iitem.MaximumStack;
     }
 
     public virtual bool CanReceiveItem(Item item)

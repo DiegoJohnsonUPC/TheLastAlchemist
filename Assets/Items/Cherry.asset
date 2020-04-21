@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beccc1f6b80443d4982e60c83b61a94f, type: 3}
   m_Name: Cherry
   m_EditorClassIdentifier: 
+  id: 63304aa8c6f32be4abdfbd754e3def20
   ItemName: Cherry
+  MaximumStack: 10
   Icon: {fileID: 21300000, guid: 7cdfac4d4d8f9b34fb71565770508893, type: 3}

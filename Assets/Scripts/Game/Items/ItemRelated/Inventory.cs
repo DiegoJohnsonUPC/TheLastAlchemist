@@ -2,11 +2,10 @@
 using UnityEngine;
 using System;
 
-public class Inventory : MonoBehaviour
+public class Inventory : ItemContainer
 {
     [SerializeField] List<Item> startingItems;
     [SerializeField] Transform itemsParent;
-    [SerializeField] ItemSlot[] itemSlots;
 
     public event Action<ItemSlot> OnRightClickEvent;
     public event Action<ItemSlot> OnBeginDragEvent;
@@ -16,7 +15,7 @@ public class Inventory : MonoBehaviour
     public event Action<ItemSlot> OnDragEvent;
     public event Action<ItemSlot> OnDropEvent;
 
-    private void Awake()
+    private void Start()
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
@@ -28,6 +27,7 @@ public class Inventory : MonoBehaviour
             itemSlots[i].OnDragEvent += OnDragEvent;
             itemSlots[i].OnDropEvent += OnDropEvent;
         }
+        SetStartingItems();
     }
 
     private void OnValidate()
@@ -44,49 +44,13 @@ public class Inventory : MonoBehaviour
         int i = 0;
         for (; i < startingItems.Count && i < itemSlots.Length; i++) 
         {
-            itemSlots[i].item = startingItems[i];
+            itemSlots[i].item = startingItems[i].GetCopy();
+            itemSlots[i].Amount = 1;
         }
         for (; i < itemSlots.Length; i++)
         {
             itemSlots[i].item = null;
+            itemSlots[i].Amount = 0;
         }
-    }
-
-    public bool AddItem(Item item)
-    {
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            if(itemSlots[i].item == null)
-            {
-                itemSlots[i].item = item;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public bool RemoveItem(Item item)
-    {
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            if (itemSlots[i].item == item)
-            {
-                itemSlots[i].item = null;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public bool IsFull()
-    {
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            if (itemSlots[i].item == null)
-            {
-                return false;
-            }
-        }
-        return true;
     }
 }
