@@ -19,7 +19,7 @@ public class Room_Spawner : MonoBehaviour
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<Room_Templates>();
         if(templates.positions.ContainsKey(transform.position)){
             Destroy(this);
-            Debug.Log("choque");
+            
         } 
         grid = GameObject.FindGameObjectWithTag("Grid");
         randf = (Random.Range(100,200))/100f;
@@ -39,8 +39,7 @@ public class Room_Spawner : MonoBehaviour
             Destroy(this);
         } 
         templates.positions.Add(transform.position, this);
-        Debug.Log(templates.positions.Count);
-        Debug.Log(transform.position);
+       
         
         if(spawned == false){
             if(openingDirection == 1){
@@ -88,8 +87,7 @@ public class Room_Spawner : MonoBehaviour
             Destroy(this);
         } 
         templates.positions.Add(transform.position, this);
-        Debug.Log(templates.positions.Count);
-        Debug.Log(transform.position);
+        
         if(spawned == false){
             if(openingDirection == 1){
                 //1 --> D
@@ -115,6 +113,5 @@ public class Room_Spawner : MonoBehaviour
             spawned = true;
         }
         
-        //Debug.Log("d");
     }
 }
