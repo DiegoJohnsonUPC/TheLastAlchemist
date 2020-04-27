@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingRecipeUI : MonoBehaviour
+public class CraftingRecipeUI : ItemContainer
 {
+    [SerializeField] Item[] items;
 
-    [SerializeField] ItemSlot[] itemSlots;
+    public List<CraftingRecipe> recipes;
 
-    public ItemContainer ItemContainer;
+    public ItemContainer itemContainer;
 
     private CraftingRecipe craftingRecipe;
     public CraftingRecipe CraftingRecipe
@@ -30,35 +31,37 @@ public class CraftingRecipeUI : MonoBehaviour
 
     private void Start()
     {
-        foreach (ItemSlot itemSlot in itemSlots)
+        for (int i = 0; i < itemSlots.Length; i++)
         {
-            itemSlot.OnPointerEnterEvent += OnPointerEnterEvent;
-            itemSlot.OnPointerExitEvent += OnPointerExitEvent;
-            itemSlot.OnBeginDragEvent += OnBeginDragEvent;
-            itemSlot.OnEndDragEvent += OnEndDragEvent;
-            itemSlot.OnDragEvent += OnDragEvent;
-            itemSlot.OnDropEvent += OnDropEvent;
-        }            
+            itemSlots[i].OnBeginDragEvent += OnBeginDragEvent;
+            itemSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
+            itemSlots[i].OnPointerExitEvent += OnPointerExitEvent;
+            itemSlots[i].OnEndDragEvent += OnEndDragEvent;
+            itemSlots[i].OnDragEvent += OnDragEvent;
+            itemSlots[i].OnDropEvent += OnDropEvent;
+            itemSlots[i].item = items[i];
+            print(itemSlots[i].item);
+        }
     }
 
     public void OnCraftButtonClick()
     {
-        if(craftingRecipe != null && ItemContainer != null)
+        foreach (CraftingRecipe craftingRecipe in recipes)
         {
-            if (craftingRecipe.CanCraft(ItemContainer))
+            if (craftingRecipe.CanCraft(this))
             {
-                if (!ItemContainer.IsFull())
+                if (!itemContainer.IsFull())
                 {
-                    craftingRecipe.Craft(ItemContainer);
+                    craftingRecipe.Craft(itemContainer, this);
                 }
                 else
                 {
-                    Debug.LogError("Inventory is Full!");
+                    Debug.Log("Inventory is Full!");
                 }
             }
             else
             {
-                Debug.LogError("You don't have the required materials!");
+                Debug.Log("You don't have the required materials!");
             }
         }
     }

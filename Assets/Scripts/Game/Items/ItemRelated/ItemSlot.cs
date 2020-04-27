@@ -33,6 +33,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
     }
+    
     private int _amount;
     public int Amount
     {
@@ -62,6 +63,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     protected virtual void OnValidate()
     {
+        if(_item == null)
+            image.color = disabledColor;
         if (image == null)
             image = GetComponent<Image>();
         if (amountText == null)

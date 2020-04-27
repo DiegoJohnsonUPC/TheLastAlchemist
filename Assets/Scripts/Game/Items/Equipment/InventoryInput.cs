@@ -50,6 +50,11 @@ public class InventoryInput : MonoBehaviour
         }
     }
 
+
+    private void Start()
+    {
+        characterPanelGameObject.SetActive(false);
+    }
     public void ShowMouseCursor()
     {
         Cursor.visible = true;

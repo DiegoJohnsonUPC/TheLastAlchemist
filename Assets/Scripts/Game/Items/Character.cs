@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] StatPanel statPanel;
     [SerializeField] ItemTooltip itemTooltip;
+    [SerializeField] CraftingRecipeUI craftingRecipeUI;
     [SerializeField] Image draggableItem;
 
     private ItemSlot dragItemSlot;
@@ -20,7 +21,7 @@ public class Character : MonoBehaviour
             itemTooltip = FindObjectOfType<ItemTooltip>();
     }
 
-    private void Awake()
+    private void Start()
     {
         statPanel.SetStats(Damage);
         statPanel.UpdateStatValues();
@@ -32,21 +33,27 @@ public class Character : MonoBehaviour
         //Pointer Enter
         inventory.OnPointerEnterEvent += ShowTooltip;
         equipmentPanel.OnPointerEnterEvent += ShowTooltip;
+        craftingRecipeUI.OnPointerEnterEvent += ShowTooltip;
         //Pointer Exit
         inventory.OnPointerExitEvent += HideTooltip;
         equipmentPanel.OnPointerExitEvent += HideTooltip;
+        craftingRecipeUI.OnPointerExitEvent += HideTooltip;
         //Begin Drag
         inventory.OnBeginDragEvent += BeginDrag;
         equipmentPanel.OnBeginDragEvent += BeginDrag;
+        craftingRecipeUI.OnBeginDragEvent += BeginDrag;
         //End Drag
         inventory.OnEndDragEvent += EndDrag;
         equipmentPanel.OnEndDragEvent += EndDrag;
+        craftingRecipeUI.OnEndDragEvent += EndDrag;
         //Drag
         inventory.OnDragEvent += Drag;
         equipmentPanel.OnDragEvent += Drag;
+        craftingRecipeUI.OnDragEvent += Drag;
         //Drop
         inventory.OnDropEvent += Drop;
         equipmentPanel.OnDropEvent += Drop;
+        craftingRecipeUI.OnDropEvent += Drop;
     }
 
     private void Equip(ItemSlot itemSlot)

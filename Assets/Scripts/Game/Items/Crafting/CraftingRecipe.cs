@@ -17,11 +17,11 @@ public class CraftingRecipe : ScriptableObject
     public List<ItemAmount> Materials;
     public List<ItemAmount> Results;
 
-    public bool CanCraft(IItemContainer itemContainer)
+    public bool CanCraft(IItemContainer itemContainerEntrada)
     {
         foreach (ItemAmount itemAmount in Materials)
         {
-            if(itemContainer.ItemCount(itemAmount.Item.ID) < itemAmount.Amount)
+            if(itemContainerEntrada.ItemCount(itemAmount.Item.ID) < itemAmount.Amount)
             {
                 return false;
             }
@@ -29,15 +29,15 @@ public class CraftingRecipe : ScriptableObject
         return true;
     }
 
-    public void Craft(IItemContainer itemContainer)
+    public void Craft(IItemContainer itemContainerSalida, IItemContainer itemContainerEntrada)
     {
-        if (CanCraft(itemContainer))
+        if (CanCraft(itemContainerEntrada))
         {
             foreach (ItemAmount itemAmount in Materials)
             {
                 for (int i = 0; i < itemAmount.Amount; i++)
                 {
-                    Item oldItem = itemContainer.RemoveItem(itemAmount.Item.ID);
+                    Item oldItem = itemContainerEntrada.RemoveItem(itemAmount.Item.ID);
                     oldItem.Destroy();
                 }
             }
@@ -46,7 +46,7 @@ public class CraftingRecipe : ScriptableObject
             {
                 for (int i = 0; i < itemAmount.Amount; i++)
                 {
-                    itemContainer.AddItem(itemAmount.Item.GetCopy());
+                    itemContainerSalida.AddItem(itemAmount.Item.GetCopy());
                 }
             }
         }

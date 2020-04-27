@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beccc1f6b80443d4982e60c83b61a94f, type: 3}
+  m_Name: HPpotion
+  m_EditorClassIdentifier: 
+  id: 3f9481fb2638ff24baa59abd3cd559b5
+  ItemName: HPpotion
+  MaximumStack: 1
+  Icon: {fileID: 21300000, guid: 369bed47f1eb0c74eb7ff6b335e5728c, type: 3}
