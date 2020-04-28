@@ -15543,15 +15543,10 @@ MonoBehaviour:
   - {fileID: 1851331034}
   - {fileID: 422809960}
   - {fileID: 777593888}
-  items:
-  - {fileID: 11400000, guid: 63304aa8c6f32be4abdfbd754e3def20, type: 2}
-  - {fileID: 11400000, guid: 63304aa8c6f32be4abdfbd754e3def20, type: 2}
-  - {fileID: 11400000, guid: ec48e6aa7e149d14a94d4c14a47c57f0, type: 2}
-  - {fileID: 11400000, guid: 63304aa8c6f32be4abdfbd754e3def20, type: 2}
   recipes:
-  - {fileID: 11400000, guid: 19393372d245b1d448120d631c6a4463, type: 2}
-  - {fileID: 11400000, guid: 4103183cff0954c4b8ca355c6f49d1a5, type: 2}
   - {fileID: 11400000, guid: 552cc82a3921bfd41b7c6736f78a15d3, type: 2}
+  - {fileID: 11400000, guid: 4103183cff0954c4b8ca355c6f49d1a5, type: 2}
+  - {fileID: 11400000, guid: 19393372d245b1d448120d631c6a4463, type: 2}
   itemContainer: {fileID: 766421018}
 --- !u!1 &1270710653
 GameObject:

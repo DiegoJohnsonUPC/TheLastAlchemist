@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CraftingRecipeUI : ItemContainer
 {
-    [SerializeField] Item[] items;
 
     public List<CraftingRecipe> recipes;
 
@@ -31,6 +30,7 @@ public class CraftingRecipeUI : ItemContainer
 
     private void Start()
     {
+        recipes.Reverse();
         for (int i = 0; i < itemSlots.Length; i++)
         {
             itemSlots[i].OnBeginDragEvent += OnBeginDragEvent;
@@ -39,14 +39,12 @@ public class CraftingRecipeUI : ItemContainer
             itemSlots[i].OnEndDragEvent += OnEndDragEvent;
             itemSlots[i].OnDragEvent += OnDragEvent;
             itemSlots[i].OnDropEvent += OnDropEvent;
-            itemSlots[i].item = items[i];
-            print(itemSlots[i].item);
         }
     }
 
     public void OnCraftButtonClick()
     {
-        foreach (CraftingRecipe craftingRecipe in recipes)
+        foreach (CraftingRecipe craftingRecipe in recipes)   
         {
             if (craftingRecipe.CanCraft(this))
             {

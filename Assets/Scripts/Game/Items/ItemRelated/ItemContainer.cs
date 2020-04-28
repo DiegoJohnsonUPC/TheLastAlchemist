@@ -79,9 +79,11 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         int number = 0;
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i].item.ID == itemID)
-            {
-                number++;
+            if(itemSlots[i].item != null) {
+                if (itemSlots[i].item.ID == itemID)
+                {
+                    number++;
+                }
             }
         }
         return number;
