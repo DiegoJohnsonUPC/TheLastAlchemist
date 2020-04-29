@@ -56,6 +56,7 @@ public class CraftingRecipeUI : ItemContainer
                 {
                     Debug.Log("Inventory is Full!");
                 }
+                break;
             }
             else
             {

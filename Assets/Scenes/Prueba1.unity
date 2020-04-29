@@ -13117,9 +13117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPanelGameObject: {fileID: 465844692}
+  craftingUIGameObject: {fileID: 1245812431}
   equipmentPanelGameObject: {fileID: 750853082}
   toggleCharacterPanelKeys: 74000000
   toggleInventoryKeys: 69000000
+  toggleCraftingKeys: 63000000
 --- !u!1 &622533793
 GameObject:
   m_ObjectHideFlags: 0
