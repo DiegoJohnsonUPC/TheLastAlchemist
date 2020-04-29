@@ -14237,7 +14237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855900234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0715, y: 0.1342, z: -0.8086189}
+  m_LocalPosition: {x: -1.207, y: 0.241, z: -0.8086189}
   m_LocalScale: {x: 1.0786008, y: 1.0786008, z: 1.0786008}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17814,6 +17814,7 @@ GameObject:
   - component: {fileID: 1914760869}
   - component: {fileID: 1914760873}
   - component: {fileID: 1914760868}
+  - component: {fileID: 1914760874}
   m_Layer: 8
   m_Name: Slime
   m_TagString: Enemy
@@ -17875,7 +17876,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 5b1335eabed04cf4c81603ea0f6f784b, type: 3}
+  m_Sprite: {fileID: -7945604193624912637, guid: 8d9f234e43f15eb46bf8af10eaa8057a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17920,18 +17922,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.9124391, y: -4.6839285}
+  m_Offset: {x: 0.00068417937, y: -0.028581075}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 14.4, y: 14.4}
+    oldSize: {x: 0.14, y: 0.18}
     newSize: {x: 14.4, y: 14.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.4478345, y: 5.5014706}
+  m_Size: {x: 0.13595755, y: 0.09421636}
   m_EdgeRadius: 0
 --- !u!4 &1914760872
 Transform:
@@ -17941,8 +17943,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914760867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.146, y: -0.387, z: 734.39404}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 1}
+  m_LocalPosition: {x: 1.04, y: -0.437, z: 734.39404}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -17961,6 +17963,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   Drops: []
+--- !u!95 &1914760874
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914760867}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 567d010b62081574ab994360e4e001df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1948368526
 GameObject:
   m_ObjectHideFlags: 0
